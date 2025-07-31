@@ -2,7 +2,7 @@
 require_once '../config/db.php';
 
 // Obtener historia del local
-$query_local = "SELECT historia FROM local WHERE id_usuario = 1";
+$query_local = "SELECT historia FROM local WHERE id_usuario = 2";
 $stmt_local = $conn->prepare($query_local);
 $stmt_local->execute();
 $result_local = $stmt_local->get_result();
@@ -14,7 +14,7 @@ if ($result_local && $result_local->num_rows > 0) {
 }
 
 // Obtener datos del artesano
-$query_usuario = "SELECT nombre, imagen FROM usuario WHERE id_usuario = 1";
+$query_usuario = "SELECT nombre, imagen FROM usuario WHERE id_usuario = 2";
 $stmt_usuario = $conn->prepare($query_usuario);
 $stmt_usuario->execute();
 $result_usuario = $stmt_usuario->get_result();
@@ -30,7 +30,7 @@ $usuario = $result_usuario->fetch_assoc();
 $query_productos = "
     SELECT producto.id_producto, producto.nombre_producto, producto.descripcion_producto, producto.imagen_producto
     FROM producto
-    WHERE ID_LOCAL = 1
+    WHERE ID_LOCAL = 2
 ";
 $stmt_productos = $conn->prepare($query_productos);
 $stmt_productos->execute();
